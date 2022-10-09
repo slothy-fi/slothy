@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 
 import Block from "./Block";
 import CreateBlock from "./CreateBlock";
 import BlockDetails from "./BlockDetails";
 import "./StrategyBuilder.css";
 
-export default function StrategyBuilder() {
+export default function StrategyBuilder({ address }) {
   const [blocks, setBlocks] = useState([]);
   const [addBlockModalOpen, setAddBlockModalOpen] = useState(false);
   const [editableBlock, setEditableBlock] = useState(null);
@@ -16,10 +16,12 @@ export default function StrategyBuilder() {
     setBlocks(blocks ?? []);
   }, []);
 
+  const handleSubmit = useCallback(() => {
+    console.log({ blocks });
+  }, []);
+
   return (
     <div>
-      <h1>Strategy Builderrrr</h1>
-
       <div className="blocks">
         {blocks.map((block, index) => (
           <div className="blockWrapper" type={index}>
@@ -47,6 +49,10 @@ export default function StrategyBuilder() {
         setEditableBlock={setEditableBlock}
         setBlocks={setBlocks}
       />
+
+      <button className="button" onClick={handleSubmit} disabled={!address || blocks.length === 0}>
+        {address ? "Submit" : "You need to connect"}
+      </button>
     </div>
   );
 }
