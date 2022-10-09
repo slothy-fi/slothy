@@ -32,7 +32,6 @@ tenderly.yaml
 coverage
 
 # production
-build
 # yarn / eslint
 .yarn/cache
 .yarn/install-state.gz
@@ -42,7 +41,6 @@ build
 coverage
 
 # production
-build
 
 # Hardhat files
 cache
