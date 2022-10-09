@@ -18,6 +18,7 @@ export default function BlockDetails({ data, blocks, setBlocks, setEditableBlock
           ...current,
           {
             ...blockData,
+            in: blocks[blocks.length - 1].out,
             out: blocks[blocks.length - 1].out,
           },
         ];
